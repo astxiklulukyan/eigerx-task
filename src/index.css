@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+
+  --scr-top-gradient: linear-gradient(132.15deg, #0B0B0F 0%, rgba(26, 26, 34, 0.9) 95.96%);
+  --scr-bottom-gradient: linear-gradient(132.15deg, #211A1A 0%, #212127 95.96%);
+
+  --box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
+
+  /*fonts*/
+  --font-inter: Inter, sans-serif;
+  --font-sf-pro-display: 'SF Pro Display', sans-serif;
+
+  /*colors*/
+  --text-color-primary: #F5F5F5;
+  --text-color-secondary: #83838D;
+  --primary-color: #24FFBC;
+
+  /*font size*/
+  --font-size-h2: 32px;
+  --font-size-base: 14px;
+
+  /*line height*/
+  --line-height-h2: 38px;
+  --line-height-base: 21px;
+
+  /*backgrounds & borders*/
+  --gray-medium: #1B1E22;
+  --gray-dark: #0B0B0F;
+  --gray-border: #15171B;
+
+  /*radius*/
+  --radius-large: 10px;
+  --radius-small: 8px;
+}
+
+@layer base {
+  h2 {
+    @apply font-sf-pro-display;
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+  }
+
+  body {
+    @apply font-inter;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--text-color-primary);
+  }
+}
+
+@layer utilities {
+  .padding-x {
+    @apply px-5;
+  }
+}
+
+@layer components {
+  .main-wrapper {    
+    &::before, &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      z-index: -1;
+    }
+
+    &::before {
+      background: var(--scr-top-gradient) var(--primary-color);
+      top: 0;
+      height: calc(50% + 36px);
+    }
+
+    &::after {
+      background: var(--scr-bottom-gradient);
+      bottom: 0;
+      height: calc(50% - 36px);
+    }
+  }
+}
